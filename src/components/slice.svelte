@@ -1,24 +1,30 @@
+<!-- TODO: https://marian-caikovski.medium.com/drawing-sectors-and-pie-charts-with-svg-paths-b99b5b6bf7bd -->
 <script lang="ts">
 	export let color: string;
-	export let i: number;
-	export let max: number;
-	export let r: number;
-    export let circumfrence: number;
-	export let strokeWidth: number;
-	export let viewBoxSize: number;
+	export let position: number;
+	export let radius: number;
+	export let arcLength: number;
+	export let centerCoord: number;
 
-    const sliceSize: number = (1 / max) * circumfrence;
-	const strokeDashArray: string = `${sliceSize / 2} ${(100 - sliceSize) / 2}`;
+	const strokeDashArray: string = `${arcLength} ${100 - arcLength}`;
+	const strokeDashOffSet: string = `-${arcLength * position}`;
+	console.log({
+		color,
+		position,
+		radius,
+		arcLength,
+		strokeDashArray,
+		strokeDashOffSet
+	});
 </script>
 
 <circle
-	{r}
-	cx={viewBoxSize / 2}
-	cy={viewBoxSize / 2}
+	r={radius}
+	cx={centerCoord}
+	cy={centerCoord}
 	fill="transparent"
 	stroke={color}
-	stroke-width={strokeWidth}
+	stroke-width={radius * 1.99}
 	stroke-dasharray={strokeDashArray}
-	stroke-dashoffset={(sliceSize / 2) * i}
-	id={`pieslice-${i}`}
+	stroke-dashoffset={strokeDashOffSet}
 />

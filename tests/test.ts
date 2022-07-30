@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test('index page has expected h1', async ({ page }) => {
 	await page.goto('/');
-	expect(await page.textContent('h1')).toBe('Emotion Wheel');
+	expect(await page.textContent('[data-test-id=page-header]')).toBe('Emotion Wheel');
 });
 
 test('wheel has six emotions slices and labels', async ({ page }) => {

@@ -3,23 +3,40 @@
 	import Slice from './slice.svelte';
 	import SliceLabel from './sliceLabel.svelte';
 
+	export let parentArcLength: number; // this should not be equal to its parents circumference /  sibling count
+	export let depth: number = 0;
 	export let emotion: Emotion;
-	export let i: number;
-	export let max: number;
-	export let r: number;
+	export let position: number; // position among siblings
+	export let siblingCount: number;
+	export let parentRadius: number; // this should be constant at every depth
 	export let viewBoxSize: number;
+
+	let arcLength = parentArcLength / siblingCount;
+	let radius = parentRadius + parentRadius * depth * 1.5;
 </script>
 
-<Slice color={emotion.color} {i} {max} circumfrence={100} r={r / 2} strokeWidth={r} {viewBoxSize} />
-<SliceLabel {i} {max} name={emotion.name} r={r * 0.9} {viewBoxSize} />
-{#each emotion.specificEmotions as specifcEmotion, i}
-	<Slice
-		color={specifcEmotion.color}
-		{i}
-		{max}
-		circumfrence={100}
-		r={r * 1.5}
-		strokeWidth={r}
+<Slice
+	color={emotion.color}
+	{position}
+	{arcLength}
+	{radius}
+	centerCoord={viewBoxSize / 2}
+/>
+<!-- <SliceLabel
+	{position}
+	{siblingCount}
+	name={emotion.name}
+	r={(radius * 0.9) / (depth + 1)}
+	{viewBoxSize}
+/> -->
+{#each emotion.childEmotions as childEmotion, i}
+	<svelte:self
+		parentArcLength={arcLength}
+		depth={depth + 1}
+		emotion={childEmotion}
+		position={i}
+		siblingCount={emotion.childEmotions.length}
+		{parentRadius}
 		{viewBoxSize}
 	/>
 {/each}

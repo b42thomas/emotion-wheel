@@ -1,12 +1,12 @@
 <script lang="ts">
-	export let max: number;
-	export let i: number;
+	export let siblingCount: number;
+	export let position: number;
 	export let name: string;
 	export let r: number;
 	export let viewBoxSize: number;
 
-	function calcTextAngle(max: number, i: number): number {
-		return -1 * ((i / max) * 360) + (1 / (2 * max)) * 360 - 0;
+	function calcTextAngle(siblingCount: number, position: number): number {
+		return -1 * ((position / siblingCount) * 360) + (1 / (2 * siblingCount)) * 360 - 0;
 	}
 
 	type Point = {
@@ -24,8 +24,8 @@
 		return Math.abs(textAngle) > 90 && Math.abs(textAngle) < 270;
 	}
 
-	function textTransform(max: number, i: number): string {
-		let textAngle: number = calcTextAngle(max, i);
+	function textTransform(siblingCount: number, position: number): string {
+		let textAngle: number = calcTextAngle(siblingCount, position);
 		let rotate = `rotate(${textAngle}, ${viewBoxSize / 2}, ${viewBoxSize / 2})`;
 		let translate = r / 4;
 		if (isTextUpsideDown(textAngle)) {
@@ -39,18 +39,18 @@
 			return `${rotate} translate(${translate}) rotate(180, ${secondAxisOfRotation.x}, ${secondAxisOfRotation.y})`;
 		}
 
-		return `${rotate} translate(${translate}, ${translate / max})`;
+		return `${rotate} translate(${translate}, ${translate / siblingCount})`;
 	}
 
-	function calcTextAnchor(max: number, i: number): string {
-		return isTextUpsideDown(calcTextAngle(max, i)) ? 'end' : 'start';
+	function calcTextAnchor(max: number, position: number): string {
+		return isTextUpsideDown(calcTextAngle(max, position)) ? 'end' : 'start';
 	}
 </script>
 
 <text
-	font-size={r / max}
-	transform={`${textTransform(max, i)}`}
-	text-anchor={calcTextAnchor(max, i)}
+	font-size={r / siblingCount}
+	transform={`${textTransform(siblingCount, position)}`}
+	text-anchor={calcTextAnchor(siblingCount, position)}
 	dx={viewBoxSize / 2}
 	dy={viewBoxSize / 2}
 >

@@ -5,22 +5,22 @@
 	let happy: Emotion = {
 		name: 'Happy',
 		color: 'green',
-		specificEmotions: [
-			{ name: 'joyful', color: 'green', specificEmotions: [] },
-			{ name: 'interested', color: 'green', specificEmotions: [] }
+		childEmotions: [
+			// { name: 'joyful', color: 'LightSeaGreen', childEmotions: [] },
+			// { name: 'interested', color: 'lime', childEmotions: [] }
 		]
 	};
 
 	let emotions: Emotion[] = [
 		happy,
-		{ name: 'Surprise', color: 'yellow', specificEmotions: [] },
-		{ name: 'Fear', color: 'orange', specificEmotions: [] },
-		{ name: 'Anger', color: 'red', specificEmotions: [] },
-		{ name: 'Disgust', color: 'purple', specificEmotions: [] },
-		{ name: 'Sad', color: 'blue', specificEmotions: [] }
+		{ name: 'Surprise', color: 'yellow', childEmotions: [] },
+		{ name: 'Fear', color: 'orange', childEmotions: [] },
+		{ name: 'Anger', color: 'red', childEmotions: [] },
+		{ name: 'Disgust', color: 'purple', childEmotions: [] },
+		{ name: 'Sad', color: 'blue', childEmotions: [] }
 	];
 </script>
 
-<h1>Emotion Wheel</h1>
+<h1 data-test-id="page-header">Emotion Wheel</h1>
 
 <Wheel {emotions} />
