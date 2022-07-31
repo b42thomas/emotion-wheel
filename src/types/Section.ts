@@ -1,6 +1,7 @@
 export type Section = {
-    startAngle: number;
-    radius: number;
+    color: string;
     endAngle: number;
-    fill: string;
+    name: string;
+    radius: number;
+    startAngle: number;
 }
