@@ -1,4 +1,3 @@
-<!-- TODO: https://marian-caikovski.medium.com/drawing-sectors-and-pie-charts-with-svg-paths-b99b5b6bf7bd -->
 <script lang="ts">
 	export let color: string;
 	export let position: number;

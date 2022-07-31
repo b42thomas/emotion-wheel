@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Wheel from '../components/wheel.svelte';
+	import Wheel2 from '../components/wheel2.svelte';
 	import type { Emotion } from '../types/Emotion';
 
 	let happy: Emotion = {
@@ -23,4 +23,4 @@
 
 <h1 data-test-id="page-header">Emotion Wheel</h1>
 
-<Wheel {emotions} />
+<Wheel2 {emotions} />
