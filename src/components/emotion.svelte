@@ -23,7 +23,7 @@
             startAngle,
 			depth,
         }
-	console.log("section data: ", section);
+
 </script>
 
 {#if depth === 0}

@@ -1,13 +1,16 @@
-import type { Emotion } from "src/types/Emotion";
+import anger from './anger';
+import disgust from './disgust';
+import fear from './fear';
 import happy from './happy';
-import surprise from "./surprise";
-import fear from "./fear";
+import sad from './sad';
+import surprise from './surprise';
+
 
 export default [
     happy,
     surprise,
     fear,
-    { name: 'Anger', color: 'red', childEmotions: [] },
-    { name: 'Disgust', color: 'purple', childEmotions: [] },
-    { name: 'Sad', color: 'blue', childEmotions: [] }
+    anger,
+    disgust,
+    sad
 ];
